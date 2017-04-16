@@ -21,11 +21,12 @@ void		draw(t_board *board)
 	mlx_string_put(board->mlx_ptr, board->win_ptr, 5, (SCR_Y - 25), GREEN, "FDF ~ JEFTEKHA");	
 	while (i <= 11)
 	{
-		while (y <= 19)
+		while (y <= 18)
 		{
 			mlx_pixel_put(board->mlx_ptr, board->win_ptr, board->map[i][y], board->map[i][y], WHITE);
 			y++;
 		}
+		y = 0;
 		i++;
 	}
 }

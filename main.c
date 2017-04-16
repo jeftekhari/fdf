@@ -27,6 +27,7 @@ int		main(int ac, char **av)
 		wrong(INIT_FAILED);
 	board->win_ptr = mlx_new_window(board->mlx_ptr, SCR_X, SCR_Y, "Joe's Crab Shack");
 	draw(board);
+	mlx_key_hook(board->win_ptr, my_key_funct, board);
 	mlx_loop(board->mlx_ptr);
 	close(board->fd);
 	return (0);

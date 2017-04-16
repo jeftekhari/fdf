@@ -75,7 +75,8 @@ typedef struct		s_board
 
 void	wrong(int error);
 void	parse(char *line, t_board *board, int i);
-int		read_board(t_board *board);
+int	read_board(t_board *board);
 void	draw(t_board *board);
+int	my_key_funct(int keycode, t_board *board);
 
 #endif
