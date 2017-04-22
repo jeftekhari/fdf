@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 16:07:08 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/15 21:06:39 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/22 13:20:32 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define KEY_C			8
 
 /* Pixel Size */
-# define SCR_X			1280
+# define SCR_X			1080
 # define SCR_Y			720
 # define PIXEL_SIZE		1
 
@@ -64,19 +64,49 @@
 
 typedef struct		s_board
 {
+	int				offy;
+	int				offx;
+	int				x;
+	int				y;
+	int				spacex;
+	int				spacey;
 	int				h;
 	int				w;
-	int				map[11][19];
+	int				**map;
 	int				fd;
+	int				check;
 	void			*mlx_ptr;
 	void			*win_ptr;
 }					t_board;
 
+typedef struct		s_bres
+{				
+	int				dx;
+	int				dy;
+	int				*x;
+	int				*y;
+	int				inc1;
+	int				inc2;
+	int				x_new;
+	int				y_new;
+	int				i;
+	int				e;
+}					t_bres;
 
-void	wrong(int error);
-void	parse(char *line, t_board *board, int i);
-int	read_board(t_board *board);
+
+void	wrong(int error, t_board *board);
+void	parse(char *line, t_board *board);
+void	bres_main(t_board *board);
+void	bres_alloc(t_bres *bres, t_board *board);
+void	bres_calc(t_bres *bres, t_board *board);
+void	bres_draw(t_bres *bres, t_board *board);
+int		read_board(t_board *board);
 void	draw(t_board *board);
-int	my_key_funct(int keycode, t_board *board);
+void	draw1(t_board *board);
+void	draw_xline(t_board *board, int x, int y, int color);
+void	draw_yline(t_board *board, int x, int y, int color);
+int		my_key_funct(int keycode, t_board *board);
+int		shutdown(int reason, t_board *board);
+int		set_points(t_board *board);
 
 #endif

@@ -6,13 +6,19 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 13:06:41 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/14 13:11:37 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/16 19:37:16 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		wrong(int error)
+int			shutdown(int reason, t_board *board)
+{
+	ft_memdel((void*)&board);
+	exit(reason);
+}
+
+void		wrong(int error, t_board *board)
 {
 	if (error == 0)
 		ft_putstr("Invalid # of Args.\n");
@@ -28,5 +34,5 @@ void		wrong(int error)
 		ft_putstr("Bad Content File.\n");
 	if (error == 6)
 		ft_putstr("Empty File.\n");
-	exit(0);
+	shutdown(0, board);
 }
