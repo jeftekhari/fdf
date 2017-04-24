@@ -20,10 +20,10 @@ int		set_points(t_board *board)
 	char *line = NULL;
 	char **str;
 
-	if (!(board->map = ft_memalloc(sizeof(int*) * board->h)))
+	if (!(board->map = ft_memalloc(sizeof(t_point*) * board->h)))
 		wrong(MALLOC_FAILED, board);
 	while (i < board->h)
-		if (!(board->map[i++] = ft_memalloc(sizeof(int) * board->w)))
+		if (!(board->map[i++] = ft_memalloc(sizeof(t_point) * board->w)))
 			wrong(MALLOC_FAILED, board);
 	i = 0;
 	while ((ret = get_next_line(board->fd, &line)) >= 0)
@@ -35,7 +35,7 @@ int		set_points(t_board *board)
 		str = ft_strsplit(line, ' ');
 		while (str[i + 1] && i <= board->w)
 		{
-			board->map[h][i] = ft_atoi(str[i]);
+			board->map[h][i].z = ft_atoi(str[i]);
 			i++;
 		}
 		i = 0;
@@ -50,7 +50,7 @@ void	parse(char *line, t_board *board)
 	int		i = 0;
 	char	**str;
 
-	board->w = 0;
+	board->w = 1;
 	str = ft_strsplit(line, ' ');
 	while (str[i + 1])
 	{

@@ -12,107 +12,98 @@
 
 #include "fdf.h"
 
-void		draw_yline(t_board *board, int x, int y, int color)
+void		init(t_board *board)
 {
-	int i = 0;
-	int n = 0;
-	int dx;
-	int dy;
-	int x_new;
-	int y_new;
-	int steps;
-
-	dx = abs((x + x) - x);
-	dy = abs((y + y) - y);
-	x_new = x;
-	y_new = y;
-	if (dx > dy)
-		steps = dx;
-	else
-		steps = dy;
-	mlx_pixel_put(board->mlx_ptr, board->win_ptr, x_new, y_new, color);
-	while (i < board->w)
-	{
-		while (n < steps)
-		{
-			y_new = y_new + 1;
-			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x_new, y_new, color);
-			n++;
-		}
-		n = 0;
-		i++;
-	}
+	board->spacex = 5;
+	board->spacey = 5;
 }
 
-void		draw_xline(t_board *board, int x, int y, int color)
+void		place_point(t_board *board)
 {
-	int i = 0;
-	int n = 0;
-	int dx;
-	int dy;
-	int x_new;
-	int y_new;
-	int steps;
-
-	dx = abs((x + x) - x);
-	dy = abs((y + y) - y);
-	x_new = x;
-	y_new = y;
-	if (dx > dy && board->check != 1)
+	int 	i;
+	int	j;
+	int	ori_spacex;
+	int	ori_spacey;
+	
+	i = 0;
+	ori_spacex = board->spacex;
+	ori_spacey = board->spacey;
+	while (i < board->h)
 	{
-		steps = dx;
-		board->check = 1;
-	}
-	else
-		steps = dy;
-	mlx_pixel_put(board->mlx_ptr, board->win_ptr, x_new, y_new, color);
-	while (i < board->w)
-	{
-		while (n < steps)
+		j = 0;
+		if (j == 0 && i == 0)
 		{
-			x_new = x_new + 1;
-			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x_new, y_new, color);
-			n++;
+			board->map[i][j].x = 0;
+			board->map[i][j].y = 0;
 		}
-		n = 0;
+		while (j < board->w)
+		{
+			board->map[i][j].x = board->spacex;
+			board->map[i][j].y = board->spacey;
+			board->spacex += ori_spacex;
+			j++;
+		}
 		i++;
+		board->spacex = ori_spacex;
+		board->spacey += ori_spacey;
 	}
+	board->spacex = ori_spacex;
+	board->spacey = ori_spacey;
 }
 	
-
 void		draw(t_board *board)
 {
-	int w = 0;
-	int y = 0;
-	int x = 0;
-	int h = 0;
+	int	i;
+	int	j;
 
-	board->offx = SCR_X / board->w - 10;
-	board->offy = SCR_Y / board->h - 10;
-	mlx_string_put(board->mlx_ptr, board->win_ptr, 5, (SCR_Y - 25), GREEN, "FDF ~ JEFTEKHA");	
-	y = board->offy / 2;
-	while (h < board->h)
+
+	i = 0;
+	mlx_clear_window(board->mlx_ptr, board->win_ptr);
+	place_point(board);
+	while (i < board->h)
 	{
-		x = board->offx / 2;
-		while (w < board->w)
+		j = 0;
+		if (j == 0 && i == 0)
+			j++;
+		while (j < board->w)
 		{
-			if (board->map[h][w] == 10)
-			{
-//				mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
-				draw_xline(board, x, y, GREEN);
-				draw_yline(board, x, y, GREEN);
-			}
-			else
-			{
-//				mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, RED);
-				draw_xline(board, x, y, RED);
-				draw_yline(board, x, y, RED);
-			}
-			x += board->offx;
-			w++;
+			mlx_pixel_put(board->mlx_ptr, board->win_ptr, board->map[i][j].x, board->map[i][j].y, RED);
+			draw_xline(board, i, j);
+			draw_yline(board, i, j);
+			j++;
 		}
-		y += board->offy;
-		w = 0;
-		h++;
+		i++;
+	}	
+}
+
+void		draw_yline(t_board *board, int i, int j)
+{
+	int 	x;
+	int	y;
+
+	if (i == 0)
+		return;
+	y = board->map[i - 1][j].y;
+	x = board->map[i][j].x;
+	while (y < board->map[i][j].y)
+	{
+		mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, RED);
+		y++;
+	}
+}
+
+void		draw_xline(t_board *board, int i, int j)
+{
+	int	x;
+	int	y;
+
+	if (j == 0)
+		return;
+	y = board->map[i][j].y;
+	x = board->map[i][j - 1].x;
+	while (x < board->map[i][j].x)
+	{
+		mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, RED);
+		x++;
 	}
 }

@@ -36,6 +36,9 @@ int		main(int ac, char **av)
 	if ((board->mlx_ptr = mlx_init()) == 0)
 		wrong(INIT_FAILED, board);
 	board->win_ptr = mlx_new_window(board->mlx_ptr, SCR_X, SCR_Y, "Joe's Crab Shack");
+	init(board);
+	ft_putnbr(board->spacey);
+	place_point(board);
 	draw(board);
 //	draw1(board);
 //	bres_main(board);

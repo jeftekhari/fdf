@@ -62,6 +62,13 @@
 # define BAD_CONTENT	5
 # define EMPTY_FILE		6
 
+typedef struct		s_point
+{
+	double				x;
+	double				y;
+	double				z;
+}			t_point;
+
 typedef struct		s_board
 {
 	int				offy;
@@ -72,7 +79,7 @@ typedef struct		s_board
 	int				spacey;
 	int				h;
 	int				w;
-	int				**map;
+	t_point				**map;
 	int				fd;
 	int				check;
 	void			*mlx_ptr;
@@ -96,15 +103,13 @@ typedef struct		s_bres
 
 void	wrong(int error, t_board *board);
 void	parse(char *line, t_board *board);
-void	bres_main(t_board *board);
-void	bres_alloc(t_bres *bres, t_board *board);
-void	bres_calc(t_bres *bres, t_board *board);
-void	bres_draw(t_bres *bres, t_board *board);
 int		read_board(t_board *board);
 void	draw(t_board *board);
+void	init(t_board *baord);
+void	place_point(t_board *board);
 void	draw1(t_board *board);
-void	draw_xline(t_board *board, int x, int y, int color);
-void	draw_yline(t_board *board, int x, int y, int color);
+void	draw_xline(t_board *board, int x, int y);
+void	draw_yline(t_board *board, int x, int y);
 int		my_key_funct(int keycode, t_board *board);
 int		shutdown(int reason, t_board *board);
 int		set_points(t_board *board);
