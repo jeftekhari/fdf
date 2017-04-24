@@ -6,7 +6,7 @@ NAME = fdf
 
 HEADERS = fdf.h
 
-OBJECTS = main.o includes/get_next_line/get_next_line.o draw.o draw1.o parsing.o tools.o hook.o bresenham.o
+OBJECTS = main.o includes/get_next_line/get_next_line.o draw.o parsing.o tools.o hook.o
 
 GRAPHICS_FLAGS = -framework OpenGL -framework AppKit
 

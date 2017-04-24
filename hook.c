@@ -20,6 +20,16 @@ int		my_key_funct(int keycode, t_board *board)
 		mlx_destroy_window(board->mlx_ptr, board->win_ptr);
 		exit(0);
 	}
+	if (keycode == 126)
+	{
+		board->spacex += 10;
+		board->spacey += 10;
+	}
+	if (keycode == 125)
+	{
+		board->spacex -= 10;
+		board->spacey -= 10;
+	}
+	draw(board);
 	return (0);
 }
-
