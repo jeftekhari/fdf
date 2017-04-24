@@ -87,6 +87,11 @@ void		draw_yline(t_board *board, int i, int j)
 	x = board->map[i][j].x;
 	while (y < board->map[i][j].y)
 	{
+		while (board->map[i][j].z != 0 && y < board->map[i][j].y)
+		{
+			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
+			y++;
+		}
 		mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, RED);
 		y++;
 	}
@@ -103,6 +108,11 @@ void		draw_xline(t_board *board, int i, int j)
 	x = board->map[i][j - 1].x;
 	while (x < board->map[i][j].x)
 	{
+		while (board->map[i][j].z != 0 && x < board->map[i][j].x)
+		{
+			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
+			x++;
+		}
 		mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, RED);
 		x++;
 	}

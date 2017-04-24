@@ -30,6 +30,14 @@ int		my_key_funct(int keycode, t_board *board)
 		board->spacex -= 10;
 		board->spacey -= 10;
 	}
+//	if (keycode == 123)
+//	{
+//		board->spacex -= 10;
+//		board->spacey += 10;
+//	}
+//	if (keycode == 124)
+//	{
+//	}
 	draw(board);
 	return (0);
 }
