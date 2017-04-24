@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 16:07:08 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/22 13:20:32 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 14:47:45 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,6 @@ typedef struct		s_board
 	void			*mlx_ptr;
 	void			*win_ptr;
 }					t_board;
-
-typedef struct		s_bres
-{				
-	int				dx;
-	int				dy;
-	int				*x;
-	int				*y;
-	int				inc1;
-	int				inc2;
-	int				x_new;
-	int				y_new;
-	int				i;
-	int				e;
-}					t_bres;
-
 
 void	wrong(int error, t_board *board);
 void	parse(char *line, t_board *board);

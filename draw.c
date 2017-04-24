@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:07:43 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/22 13:20:34 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 14:50:26 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		draw_yline(t_board *board, int i, int j)
 	x = board->map[i][j].x;
 	while (y < board->map[i][j].y)
 	{
-		while (board->map[i][j].z != 0 && y < board->map[i][j].y)
+		while (board->map[i][j].z != 0 && y < board->map[i][j].y && board->map[i - 1][j].z != 0)
 		{
 			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
 			y++;
@@ -108,7 +108,7 @@ void		draw_xline(t_board *board, int i, int j)
 	x = board->map[i][j - 1].x;
 	while (x < board->map[i][j].x)
 	{
-		while (board->map[i][j].z != 0 && x < board->map[i][j].x)
+		while (board->map[i][j].z != 0 && x < board->map[i][j].x && board->map[i][j - 1].z != 0)
 		{
 			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
 			x++;
