@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/16 16:15:40 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/16 19:17:33 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 15:35:40 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,17 @@ int		my_key_funct(int keycode, t_board *board)
 		board->spacex -= 10;
 		board->spacey -= 10;
 	}
-//	if (keycode == 123)
-//	{
-//		board->spacex -= 10;
-//		board->spacey += 10;
-//	}
-//	if (keycode == 124)
-//	{
-//	}
+/*	if (keycode == 123)
+	{
+		board->spacex -= 10;
+		board->spacey += 10;
+	}
+	if (keycode == 124)
+	{
+		board->spacex += 10;
+		board->spacey -= 10;
+	}
+*/
 	draw(board);
 	return (0);
 }
