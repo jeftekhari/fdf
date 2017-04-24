@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 16:07:08 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/24 14:47:45 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 15:20:57 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct		s_board
 	int				check;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	int				mid_x;
+	int				mid_y;
 }					t_board;
 
 void	wrong(int error, t_board *board);
@@ -92,7 +94,7 @@ int		read_board(t_board *board);
 void	draw(t_board *board);
 void	init(t_board *baord);
 void	place_point(t_board *board);
-void	draw1(t_board *board);
+void	calc_center(t_board *board);
 void	draw_xline(t_board *board, int x, int y);
 void	draw_yline(t_board *board, int x, int y);
 int		my_key_funct(int keycode, t_board *board);
