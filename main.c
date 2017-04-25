@@ -6,13 +6,13 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 17:40:28 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/21 18:58:26 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 14:59:03 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //alright you need to do a few things.
-	//create variables for "Right" and "Down" to prevent the lines from overextending
-	//figure out why it's going off the screen & make sure it stops at the right point
+	//center square
+	//	
 	//iso metric time
 	//
 
@@ -40,8 +40,6 @@ int		main(int ac, char **av)
 	ft_putnbr(board->spacey);
 	place_point(board);
 	draw(board);
-//	draw1(board);
-//	bres_main(board);
 	mlx_key_hook(board->win_ptr, my_key_funct, board);
 	mlx_loop(board->mlx_ptr);
 	close(board->fd);
