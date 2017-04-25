@@ -12,7 +12,7 @@
 
 //alright you need to do a few things.
 	//center square
-	//	
+	//change height to different values (not just "!= 0"
 	//iso metric time
 	//
 
