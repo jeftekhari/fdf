@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 13:06:41 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/16 19:37:16 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 15:22:02 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,20 @@ void		wrong(int error, t_board *board)
 	if (error == 6)
 		ft_putstr("Empty File.\n");
 	shutdown(0, board);
+}
+
+
+void	calc_center(t_board *board)
+{
+	int scrx = 0;
+	int scry = 0;
+	int x = 0;
+	int y = 0;
+
+	scrx = abs(SCR_X / 2);
+	scry = abs(SCR_Y / 2);
+	x = abs(board->w / 2);
+	y = abs(board->h / 2);
+	board->mid_x = (scrx + x);
+	board->mid_y = (scry + y);
 }

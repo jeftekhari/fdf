@@ -6,7 +6,7 @@
 /*   By: jeftekha <jeftekha@student.42.us.org       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:07:43 by jeftekha          #+#    #+#             */
-/*   Updated: 2017/04/22 13:20:34 by jeftekha         ###   ########.fr       */
+/*   Updated: 2017/04/24 15:20:36 by jeftekha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void		place_point(t_board *board)
 	i = 0;
 	ori_spacex = board->spacex;
 	ori_spacey = board->spacey;
+	calc_center(board);
 	while (i < board->h)
 	{
 		j = 0;
@@ -38,8 +39,8 @@ void		place_point(t_board *board)
 		}
 		while (j < board->w)
 		{
-			board->map[i][j].x = board->spacex;
-			board->map[i][j].y = board->spacey;
+			board->map[i][j].x = board->spacex + board->mid_x;
+			board->map[i][j].y = board->spacey + board->mid_y;
 			board->spacex += ori_spacex;
 			j++;
 		}
@@ -87,7 +88,7 @@ void		draw_yline(t_board *board, int i, int j)
 	x = board->map[i][j].x;
 	while (y < board->map[i][j].y)
 	{
-		while (board->map[i][j].z != 0 && y < board->map[i][j].y)
+		while (board->map[i][j].z != 0 && y < board->map[i][j].y && board->map[i - 1][j].z != 0)
 		{
 			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
 			y++;
@@ -108,7 +109,7 @@ void		draw_xline(t_board *board, int i, int j)
 	x = board->map[i][j - 1].x;
 	while (x < board->map[i][j].x)
 	{
-		while (board->map[i][j].z != 0 && x < board->map[i][j].x)
+		while (board->map[i][j].z != 0 && x < board->map[i][j].x && board->map[i][j - 1].z != 0)
 		{
 			mlx_pixel_put(board->mlx_ptr, board->win_ptr, x, y, GREEN);
 			x++;
